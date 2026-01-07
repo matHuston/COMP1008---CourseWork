@@ -77,7 +77,7 @@ abstract class AccountBase {
     abstract double calculateInterest();
     // normal method
     void displayType(){
-        System.out.println(x: "This is a base account type."); //soft adds this String under var x
+        System.out.println("This is a base account type.");
     }
 }// end of abstract class
  
@@ -101,16 +101,15 @@ class SavingsAccount extends AccountBase {
 // INTERFACE------------------------------------------------------------------
     // interfaces define methods that implementing classes must provide
     // they are used to achieve abstraction and multiple inheritance in Java
- 
 interface Printable {
     void print();
 }
 
 // Class that implements Printable interface
 class AccountReport implements Printable {
-    private Account account;
+    private final Account account;
     // Constructor
-    AccountReport(Account account) {
+    AccountReport(Account account){
         this.account = account;
     }
     // use own print method from interface
@@ -121,32 +120,51 @@ class AccountReport implements Printable {
     }
 }// end of interface implementation
  
-// -------------------------
-// MAIN CLASS
-// -------------------------
+// MAIN CLASS--------------------------------------------------------------
 public class Main {
     public static void main(String[] args) {
- 
- 
         System.out.println("==== Week 1: Account Class Demo ====");
- 
- 
+        //scanner object for user input
+        Scanner input = new Scanner(System.in);
        
         // 1. Creating Account Objects
-               
+        Account acc1 = new Account("Moreberry", 420.0);
+        Account acc2 = new Account("Jabae Newvelle", 1337.0);
+
         // 2. Using Set/Get Methods
+        acc1.setName("Moreberry!");
+        System.out.println(acc1.getName());
       
         // 3. Primitive vs Reference Types
-        
+            //example
+            int a = 10; // primitive type
+            int b = a; // reference type
+            b = 20; // changing reference b does not affect primitive a
+            //end of example
+        Account acc3 = acc1; // reference type
+        acc3.setBalance(117.0);
+
         // 4. Constants
+        System.out.println("\nMinimum Balance Constant: $" + 0.0);
       
         // 5. Methods with Parameters & Return Values
-        
+        double newBalance = acc2.deposit(69.67);
+        System.out.println("\nNew Balance after Deposit: $" + newBalance);
         // 6. Abstract Class
-       
+        SavingsAccount savingsAcc = new SavingsAccount(1000.0, 0.05);
+        savingsAcc.displayType();
+        System.err.println("Interest Earned: $" + savingsAcc.calculateInterest());
+
         // 7. Interface
+        AccountReport report = new AccountReport(acc1);
+        report.print();
         
         // 8. Scanner Example (Optional User Input)
-       
+        System.err.println("\nEnter new name for Account 2:");
+        String newName = input.nextLine();
+        acc2.setName(newName);
+        acc2.displayInfo();
+        //scanner input must be closed with the following line;
+        input.close();
     }
 }
