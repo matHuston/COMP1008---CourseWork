@@ -108,6 +108,7 @@ public class ArrayModuleDemo {
         // -----------------------------
         // PART 1: One-Dimensional Arrays
         // -----------------------------
+        
         // TO DO: Declare and create an int array of size 5
         int[] numbers = new int[5];
 
@@ -132,6 +133,7 @@ public class ArrayModuleDemo {
         // -----------------------------
         // PART 2: Exception Handling
         // -----------------------------
+
         try {
             // TO DO: Access an invalid index to demonstrate exception
             System.out.println(numbers[10]);
@@ -143,6 +145,7 @@ public class ArrayModuleDemo {
         // -----------------------------
         // PART 3: Multidimensional Arrays
         // -----------------------------
+
         int[][] studentGrades = {
             {85, 90, 78}, // each row is 1 student, each column is 1 grade
             {88, 76, 92},
@@ -159,6 +162,7 @@ public class ArrayModuleDemo {
         // -----------------------------
         // PART 4: ArrayList Introduction
         // -----------------------------
+
         ArrayList<String> names = new ArrayList<>();
 
         // TO DO: Add 3 student names
